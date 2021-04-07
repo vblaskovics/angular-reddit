@@ -13,6 +13,9 @@
         {{ article.title }}
     </a>
     <div class="meta">({{article.domain()}})</div>
+    <small>
+        {{article.description}}
+    </small>
     <ul class="ui big horizontal list voters">
         <li class="item">
             <a href (click)="voteUp()">
@@ -24,6 +27,12 @@
             <a href (click)="voteDown()">
                 <i class="arrow down icon"></i>
                 downvote
+            </a>
+        </li>
+        <li class="item">
+            <a href (click)="deleteArticle()">
+                <i class="trash alternate outline icon"></i>
+                delete
             </a>
         </li>
     </ul>

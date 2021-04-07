@@ -27,6 +27,11 @@ export class ArticleComponent implements OnInit {
     return false;
   }
 
+  deleteArticle() {
+    this.article.deleteArticle();
+    return false;
+  }
+
   ngOnInit(): void {
   }
 

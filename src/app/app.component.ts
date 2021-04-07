@@ -11,21 +11,24 @@ export class AppComponent {
 
   constructor(){
     this.articles = [
-      new Article('Angular', 'http://angular.io', 5),
-      new Article('Google', 'http://www.google.com', 3),
-      new Article('Gmail', 'http://www.gmail.com', 1)
+      new Article('Angular', 'http://angular.io', 5, 'Angular official webpage'),
+      new Article('Google', 'http://www.google.com', 3, 'Google search engine'),
+      new Article('Gmail', 'http://www.gmail.com', 1, 'Google email client service')
     ]
   }
 
-  addArticle(title: HTMLInputElement, link:HTMLInputElement): boolean {
+  addArticle(title: HTMLInputElement, link:HTMLInputElement, description:HTMLInputElement): boolean {
     console.log(`add article: ${title.value} - ${link.value}`);
-    this.articles.push(new Article(title.value, link.value));
+    this.articles.push(new Article(title.value, link.value, 0, description.value));
     title.value = '';
     link.value = '';
+    description.value = '';
     return false;
   }
 
   sortedArticles(): Article[] {
-    return this.articles.sort((a1:Article, a2:Article) => a2.votes - a1.votes);
+    return this.articles
+      .sort((a1:Article, a2:Article) => a2.votes - a1.votes)
+      .filter(a => a.alive);
   }
 }

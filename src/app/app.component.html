@@ -10,7 +10,12 @@
     <input name="link" id="link" #newLink>
   </div>
 
-  <button (click)="addArticle(newTitle, newLink)" class="ui button positive right floated">Submit</button>
+  <div class="field">
+    <label for="description">Description:</label>
+    <input name="description" id="description" #newDescription>
+  </div>
+
+  <button (click)="addArticle(newTitle, newLink, newDescription)" class="ui button positive right floated">Submit</button>
 
 </form>
 
