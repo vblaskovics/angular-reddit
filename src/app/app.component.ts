@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-reddit';
+  addArticle(title: HTMLInputElement, link:HTMLInputElement): boolean {
+    console.log(`add article: ${title.value} - ${link.value}`);
+    return false;
+  }
 }
