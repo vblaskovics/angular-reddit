@@ -47,3 +47,6 @@ ul.ui.list li:before {
   width: 100%;
 }
 
+.show-deleted .deleted {
+  text-decoration: line-through;
+}

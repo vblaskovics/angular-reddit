@@ -32,6 +32,10 @@ export class ArticleComponent implements OnInit {
     return false;
   }
 
+  isDeleted() {
+    return this.article.alive ? "" : "deleted";
+  }
+
   ngOnInit(): void {
   }
 

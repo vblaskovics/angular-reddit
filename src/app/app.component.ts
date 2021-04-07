@@ -8,13 +8,15 @@ import { Article } from './article/article.model';
 })
 export class AppComponent {
   articles: Article[];
+  showDeleted: boolean;
 
   constructor(){
     this.articles = [
       new Article('Angular', 'http://angular.io', 5, 'Angular official webpage'),
       new Article('Google', 'http://www.google.com', 3, 'Google search engine'),
       new Article('Gmail', 'http://www.gmail.com', 1, 'Google email client service')
-    ]
+    ];
+    this.showDeleted = false;
   }
 
   addArticle(title: HTMLInputElement, link:HTMLInputElement, description:HTMLInputElement): boolean {
@@ -29,6 +31,20 @@ export class AppComponent {
   sortedArticles(): Article[] {
     return this.articles
       .sort((a1:Article, a2:Article) => a2.votes - a1.votes)
-      .filter(a => a.alive);
+      // .filter(a => a.alive);
+      .filter(a => this.showDeleted ? a : a.alive);
+  }
+
+  articleCount(): number {
+    return this.articles
+      .filter(a => a.alive).length;
+  }
+  
+  toggleShowDeleted(showInput:HTMLInputElement) {
+    this.showDeleted = showInput.checked;
+  }
+
+  getArticlesClass(){
+    return this.showDeleted ? "show-deleted" : "";
   }
 }
