@@ -36,6 +36,13 @@
 
   </form>
 
+  <div [ngSwitch]="articleCount()" class="ui message">
+    <div *ngSwitchCase="1">There is ONE article</div>
+    <div *ngSwitchCase="2">There are TWO articles</div>
+    <div *ngSwitchCase="3">There are THREE articles</div>
+    <div *ngSwitchDefault>There are MORE articles</div>
+  </div>
+
   <div class="{{getArticlesClass()}}">
     <div class="ui grid posts">
       <div class="ui slider checkbox">
@@ -44,7 +51,7 @@
       </div>
 
       <app-article *ngFor="let articleItem of sortedArticles(); let i = index" [article]="articleItem"
-        [orderNumber]="i + 1">
+        [orderNumber]="i + 1" (onDelete)="permanentDelete($event)">
       </app-article>
     </div>
   </div>

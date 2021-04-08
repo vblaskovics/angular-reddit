@@ -31,7 +31,6 @@ export class AppComponent {
   sortedArticles(): Article[] {
     return this.articles
       .sort((a1: Article, a2: Article) => a2.votes - a1.votes)
-      // .filter(a => a.alive);
       .filter(a => this.showDeleted ? a : a.alive);
   }
 
@@ -60,4 +59,9 @@ export class AppComponent {
   getArticlesClass() {
     return this.showDeleted ? "show-deleted" : "";
   }
+
+  permanentDelete(articleTitle:string){
+    this.articles = this.articles.filter(article => article.title !== articleTitle);
+  }
+
 }
