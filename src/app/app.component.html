@@ -37,10 +37,10 @@
   </form>
 
   <div [ngSwitch]="articleCount()" class="ui message">
-    <div *ngSwitchCase="1">There is ONE article</div>
-    <div *ngSwitchCase="2">There are TWO articles</div>
-    <div *ngSwitchCase="3">There are THREE articles</div>
-    <div *ngSwitchDefault>There are MORE articles</div>
+    <div *ngSwitchCase="1">There is <span style="color: red;">ONE</span> article</div>
+    <div *ngSwitchCase="2">There are <span [style.color]="'green'">TWO</span> articles</div>
+    <div *ngSwitchCase="3">There are <span [style.font-size.px]="20">THREE</span> articles</div>
+    <div *ngSwitchDefault>There are <span [ngStyle]="{color:'blue', 'font-size':24 + 'px'}">MORE</span> articles</div>
   </div>
 
   <div class="{{getArticlesClass()}}">
