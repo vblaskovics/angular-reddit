@@ -14,6 +14,7 @@ import { Article } from './article.model';
 export class ArticleComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
+  @Input() orderNumber: number;
 
   constructor() { }
 
@@ -32,8 +33,8 @@ export class ArticleComponent implements OnInit {
     return false;
   }
 
-  isDeleted() {
-    return this.article.alive ? "" : "deleted";
+  getTitleClass() {
+    return this.article.alive ? '' : 'deleted';
   }
 
   ngOnInit(): void {

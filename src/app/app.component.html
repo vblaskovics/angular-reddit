@@ -9,9 +9,7 @@
         Angular Simple Reddit
       </h1>
     </div>
-    <div class="header item right floated">
-      Articles: {{articleCount()}}
-    </div>
+    <app-counter [count]="articleCount()" (onInfoClicked)="handleInfoClick($event)"></app-counter>
   </div>
 </div>
 
@@ -45,7 +43,8 @@
         <label>Show deleted items</label>
       </div>
 
-      <app-article *ngFor="let articleItem of sortedArticles()" [article]="articleItem">
+      <app-article *ngFor="let articleItem of sortedArticles(); let i = index" [article]="articleItem"
+        [orderNumber]="i + 1">
       </app-article>
     </div>
   </div>
